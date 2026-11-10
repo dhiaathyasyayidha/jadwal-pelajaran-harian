@@ -1,0 +1,35 @@
+jadwal_pelajaran = {
+    "senin": ["Matematika", "Bahasa Indonesia", "Fisika"],
+    "selasa": ["Kimia", "Biologi", "Olahraga"],
+    "rabu": ["Sejarah", "Geografi", "Seni Budaya"],
+    "kamis": ["Ekonomi", "Bahasa Inggris", "TIK"],
+    "jumat": ["Matematika", "Prakarya", "Agama"],
+    "sabtu": ["Pramuka", "B. Daerah"],
+    "minggu": [],  # Libur
+}
+
+hari_input = input("Masukin hari (contoh: Senin): ").strip().lower()
+jam_input = input(
+    "Masukin jam sekarang (opsional, contoh: 15:30; kosongkan jika tidak perlu): "
+).strip()
+
+if hari_input not in jadwal_pelajaran:
+    print(f"\nHari '{hari_input}' gak ada di jadwal! Masukin Senin-Minggu aja.")
+elif not jadwal_pelajaran[hari_input]:
+    print(f"\nHari {hari_input.capitalize()} LIBUR! Gak ada pelajaran.")
+else:
+    jadwal_hari_ini = jadwal_pelajaran[hari_input]
+
+    print(f"\n=== Jadwal Pelajaran Hari {hari_input.capitalize()} ===")
+    for nomor, mapel in enumerate(jadwal_hari_ini, start=1):
+        print(f"{nomor}. {mapel}")
+
+    if jam_input:
+        print(
+            f"\n[Notifikasi HP] Pengingat: Sekarang jam {jam_input}, "
+            f"waktunya siapin buku {jadwal_hari_ini[0]} ya!"
+        )
+    else:
+        print("\nJangan lupa siapin buku-buku di atas ya!")
+
+print("\nProgram selesai.")
